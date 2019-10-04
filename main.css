@@ -1,0 +1,166 @@
+html {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+  font-size: 12pt;
+  background-color: #999999;
+
+  max-width: 1000px;
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  flex-direction: row;
+}
+
+.container div {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.container div * {
+  transition: all 0.25s ease-in-out;
+}
+
+.container div div:hover {
+  transform: scale(1.1);
+}
+
+.columns {
+  padding-left: 15px;
+  padding-right: 15px;
+
+  display: grid;
+  grid-gap: 10px;
+
+  grid-template-columns: repeat(7, [col-start] 1fr);
+}
+
+.columns > * {
+  grid-column: col-start / span 6;
+}
+
+@media (min-width: 400px) {
+  #a {
+    grid-column: col-start / span 2;
+    grid-row: 1;
+  }
+  #b {
+    grid-column: col-start 3 / span 2;
+    grid-row: 1;
+  }
+  #c {
+    grid-column: col-start 5 / span 2;
+    grid-row: 1;
+  }
+  #d {
+    grid-column: col-start 1 / span 2;
+    grid-row: 2;
+  }
+  #e {
+    grid-column: col-start 3 / span 2;
+    grid-row: 2;
+  }
+  #f {
+    grid-column: col-start 5 / span 2;
+    grid-row: 2;
+  }
+  #g {
+    grid-column: col-start 3 / span 2;
+    grid-row: 3;
+  }
+}
+
+@media (min-width: 1000px) {
+  #a {
+    grid-column: col-start / span 1;
+    grid-row: 1;
+  }
+  #b {
+    grid-column: col-start 2 / span 1;
+    grid-row: 1;
+  }
+  #c {
+    grid-column: col-start 3 / span 1;
+    grid-row: 1;
+  }
+  #d {
+    grid-column: col-start 4 / span 1;
+    grid-row: 1;
+  }
+  #e {
+    grid-column: col-start 5 / span 1;
+    grid-row: 1;
+  }
+  #f {
+    grid-column: col-start 6 / span 1;
+    grid-row: 1;
+  }
+  #g {
+    grid-column: col-start 7 / span 1;
+    grid-row: 1;
+  }
+}
+
+.col {
+  justify-content: center;
+  background-color: #707070;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+
+  transition: all 0.25s ease-in-out;
+}
+
+.col:hover {
+  background-color: #808080;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transform: scale(1.1);
+}
+
+.col * {
+  display: flex;
+  justify-content: center;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.heading {
+  font-weight: bold;
+  font-size: 20pt;
+}
+
+.motto {
+  font-style: italic;
+  font-size: 15pt;
+}
+
+.text {
+  font-size: 15pt;
+}
+
+.image {
+  clip-path: polygon(30% 30% 30% 30%);
+}
+
+img {
+  height: 100px;
+  width: 100px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+a:visited {
+  color: blue;
+}
