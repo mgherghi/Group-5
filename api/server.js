@@ -6,6 +6,8 @@ import passport from 'passport';
 import config from './config/passport';
 
 import login from './routes/login';
+import questions from './routes/questions';
+import topics from './routes/topics';
 
 // Setting up port
 const PORT = process.env.PORT || 3000;
@@ -15,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false })); // For body parser
 app.use(bodyParser.json());
 app.use(cookieSession({
   name: 'mysession',
-  keys: ['vueauthrandomkey'],
+  keys: ['vueauthrandomkey'], // todo, remove this from being hardcoded
   maxAge: 24 * 60 * 60 * 1000, // 24 hours
 }));
 app.use(passport.initialize());
@@ -24,12 +26,14 @@ config();
 
 // wire up all the routes
 app.use(login(passport));
+app.use(questions);
+app.use(topics);
 
 // respond with "hello world" when a GET request is made to the homepage
 app.get('/', (_req, res) => {
-  res.send('hello world');
+  res.send('Welcome to the ICS Quiz Program API!');
 });
 
 createConnection().then(() => {
-  app.listen(PORT, () => console.log('Example app listening on port 3000!'));
+  app.listen(PORT, () => console.log('The ICS Quiz Program API, listening on port 3000!'));
 });
