@@ -20,6 +20,6 @@ export default class SubTopic {
   @ManyToOne(() => Topic, (topic) => topic.subtopics)
   topic
 
-  @OneToMany(() => Question, (question) => question.topic)
+  @OneToMany(() => Question, (question) => question.subtopic)
   questions
 }
