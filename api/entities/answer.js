@@ -14,6 +14,9 @@ export default class Answer {
 
   @Column({ type: 'varchar' })
   data
+
+  @Column({ type: 'varbinary' })
+  img
   
   @Column({ type: 'boolean' })
   correct
