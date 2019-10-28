@@ -4,8 +4,7 @@ import {
   Column,
   PrimaryGeneratedColumn,
   ManyToOne,
-  OneToOne,
-  JoinColumn,
+  OneToMany
 } from 'typeorm';
 import User from './user';
 import Topic from './topic';
@@ -29,7 +28,6 @@ export default class Question {
   @ManyToOne(() => SubTopic, (subtopic) => subtopic.questions)
   subtopic
 
-  @OneToOne(() => Answer, (answer) => answer.question)
-  @JoinColumn()
-  answer
+  @OneToMany(() => Answer, (answer) => answer.question)
+  answers
 }
