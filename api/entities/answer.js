@@ -4,6 +4,7 @@ import {
   Column,
   PrimaryGeneratedColumn,
   OneToOne,
+  JoinColumn,
 } from 'typeorm';
 import Question from './question';
 
@@ -14,7 +15,4 @@ export default class Answer {
 
   @Column({ type: 'varchar' })
   data
-
-  @OneToOne(() => Question, (question) => question.answer)
-  question
 }

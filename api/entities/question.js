@@ -5,6 +5,7 @@ import {
   PrimaryGeneratedColumn,
   ManyToOne,
   OneToOne,
+  JoinColumn,
 } from 'typeorm';
 import User from './user';
 import Topic from './topic';
@@ -17,7 +18,7 @@ export default class Question {
   id
 
   @Column({ type: 'varchar' })
-  name
+  content
 
   @ManyToOne(() => User, (user) => user.questions)
   user
@@ -29,5 +30,6 @@ export default class Question {
   subtopic
 
   @OneToOne(() => Answer, (answer) => answer.question)
+  @JoinColumn()
   answer
 }

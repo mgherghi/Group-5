@@ -79,7 +79,7 @@ router.route('/topics/:id')
     });
 
     getManager().delete(Topic, req.topic.id).then(() => {
-      res.send(200);
+      res.sendStatus(200);
     });
   });
 
