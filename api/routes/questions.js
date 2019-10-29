@@ -16,8 +16,11 @@ function deleteQuestion(question) {
 
     getManager().delete(Question, question.id);
   });
+<<<<<<< HEAD
 
   getManager().delete(Question, question.id);
+=======
+>>>>>>> Fixed two syntax errors
 }
 
 function deleteQuestions(questions) {

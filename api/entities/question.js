@@ -4,7 +4,7 @@ import {
   Column,
   PrimaryGeneratedColumn,
   ManyToOne,
-  OneToMany
+  OneToMany,
 } from 'typeorm';
 import User from './user';
 import Topic from './topic';
