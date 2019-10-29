@@ -25,7 +25,7 @@ const router = Router();
 router.route('/topics')
   .all(isAuthenticated)
   .get((req, res) => {
-    getRepository(Topic).find({ where: { userId: req.user.id }, relations: ['subtopics', 'subtopics.questions', 'questions', 'questions.answer'] }).then((topics) => {
+    getRepository(Topic).find({ where: { userId: req.user.id }, relations: ['subtopics', 'subtopics.questions', 'questions', 'questions.answers'] }).then((topics) => {
       res.send(topics);
     });
   })
@@ -51,7 +51,7 @@ router.route('/topics/:id')
   .all(isAuthenticated)
   .all((req, res, next) => {
     getRepository(Topic).findOneOrFail(
-      { where: { userId: req.user.id, id: req.params.id }, relations: ['subtopics', 'subtopics.questions', 'questions', 'questions.answer'] },
+      { where: { userId: req.user.id, id: req.params.id }, relations: ['subtopics', 'subtopics.questions', 'questions', 'questions.answers'] },
     ).then((_foundTopic) => {
       req.topic = _foundTopic;
       next();
@@ -97,7 +97,7 @@ router.route('/topics/:id/subtopics')
   })
   .get((req, res) => {
     getRepository(SubTopic).find(
-      { where: { topic: req.topic }, relations: ['topic', 'questions', 'questions.answer'] },
+      { where: { topic: req.topic }, relations: ['topic', 'questions', 'questions.answers'] },
     ).then((subtopics) => {
       res.send(subtopics);
     });
@@ -128,7 +128,7 @@ router.route('/topics/:id/subtopics/:id2')
       { where: { userId: req.user.id, id: req.params.id } },
     ).then((_foundTopic) => {
       getRepository(SubTopic).findOneOrFail(
-        { where: { topic: _foundTopic, id: req.params.id2 }, relations: ['topic', 'questions', 'questions.answer'] },
+        { where: { topic: _foundTopic, id: req.params.id2 }, relations: ['topic', 'questions', 'questions.answers'] },
       ).then((_foundSubTopic) => {
         req.topic = _foundTopic;
         req.subtopic = _foundSubTopic;
