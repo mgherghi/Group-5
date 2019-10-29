@@ -19,6 +19,9 @@ export default class Question {
   @Column({ type: 'varchar' })
   content
 
+  @Column({ type: 'varbinary' })
+  img
+
   @ManyToOne(() => User, (user) => user.questions)
   user
 

@@ -15,7 +15,6 @@ function deleteQuestion(question) {
     }
 
     getManager().delete(Question, question.id);
-  });
 }
 
 function deleteQuestions(questions) {
