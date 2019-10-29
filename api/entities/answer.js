@@ -13,7 +13,7 @@ export default class Answer {
   id
 
   @Column({ type: 'varchar' })
-  data
+  content
   
   @Column({ type: 'boolean' })
   correct
