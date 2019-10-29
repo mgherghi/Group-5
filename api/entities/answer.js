@@ -13,10 +13,7 @@ export default class Answer {
   id
 
   @Column({ type: 'varchar' })
-  data
-
-  @Column({ type: 'varbinary' })
-  img
+  content
   
   @Column({ type: 'boolean' })
   correct
