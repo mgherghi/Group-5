@@ -8,13 +8,13 @@ import Topic from '../entities/topic';
 import SubTopic from '../entities/subtopic';
 
 function deleteQuestion(question) {
-  getManager().delete(Question, question.id);
-
   getRepository(Answer).findOneOrFail(
     { where: { id: question.answer.id } },
   ).then((_foundAnswer) => {
     getManager().delete(Answer, _foundAnswer.id);
   });
+
+  getManager().delete(Question, question.id);
 }
 
 function deleteQuestions(questions) {
