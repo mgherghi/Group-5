@@ -9,6 +9,7 @@
       <div class="column is-half">
         <h5 class="title is-5">New Topic</h5>
         <form v-on:submit.prevent="onSubmitTopic">
+          <span class="has-text-danger" v-if="error">Topic already exists.</span>
           <b-field label="Topic Title">
             <b-input v-model="newTopic.name" />
           </b-field>
@@ -67,9 +68,17 @@ export default {
   // },
   methods: {
     onSubmitTopic() {
-      this.$store.dispatch("addTopic", this.newTopic).then(() => {
-        this.newTopic.name = null;
-      });
+      this.newTopic.name = this.newTopic.name.toLowerCase();
+      this.$store.dispatch("addTopic", this.newTopic).then(
+        () => {
+          this.newTopic.name = null;
+          this.error = false;
+        },
+        () => {
+          this.newTopic.name = null;
+          this.error = true;
+        }
+      );
     },
     onSubmitSubTopic() {
       this.$store.dispatch("addSubTopic", this.newSubTopic).then(() => {

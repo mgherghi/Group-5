@@ -12,7 +12,7 @@ export const mutations = {
     state.loginState = { ...state.loginState, loggedIn: false };
   },
   addTopic: function(state, topic) {
-    state.topics = [...state.topics, {...topic}];
+    state.topics = [...state.topics, { ...topic }];
   },
   topicsLoaded: function(state, topics) {
     state.topics = topics;

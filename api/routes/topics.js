@@ -34,9 +34,18 @@ router.route('/topics')
     const manager = getManager();
     const topic = manager.create(Topic, { name });
     topic.user = req.user;
-    manager.save(topic).then((savedTopic) => {
-      res.send(savedTopic);
-    }, {});
+    getRepository(Topic).findOneOrFail(
+      { where: { userId: topic.user, name: topic.name } }
+    ).then(
+      () => {
+        res.sendStatus(400).send({ msg: "Topic already exists" });
+      }, 
+      () => {
+        manager.save(topic).then((savedTopic) => {
+          res.send(savedTopic);
+        });
+      }
+    )
   })
   .delete((req, res) => {
     getRepository(Topic).find(
