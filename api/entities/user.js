@@ -24,4 +24,7 @@ export default class User {
 
   @OneToMany(() => Question, (question) => question.user)
   questions
+
+  @ManyToMany(() => Course, (course) => course.user)
+  courses
 }
