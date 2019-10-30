@@ -3,8 +3,7 @@ import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
-  OneToOne,
-  JoinColumn,
+  ManyToOne,
 } from 'typeorm';
 import Question from './question';
 
@@ -14,5 +13,14 @@ export default class Answer {
   id
 
   @Column({ type: 'varchar' })
-  data
+  content
+
+  @Column({ type: 'varbinary' })
+  img
+
+  @Column({ type: 'boolean' })
+  correct
+
+  @ManyToOne(() => Question, (question) => question.answers)
+  question
 }
