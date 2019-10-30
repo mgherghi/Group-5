@@ -7,7 +7,13 @@
     </div>
     <div class="columns is-centered">
       <div class="column is-half">
-        <b-table :data="data" :columns="columns" />
+        <b-table
+          :data="data"
+          :columns="columns"
+          checkable
+          :checked-rows.sync="checkedRows"
+          :checkbox-position="checkboxPosition"
+        />
       </div>
     </div>
   </div>
@@ -18,14 +24,18 @@
 export default {
   name: "QuestionBank",
   data: function() {
+    const data = [
+      { id: 1, content: "Wow", topic: "Topic1", subtopic: "Subtopic1" },
+      { id: 2, content: "Check", topic: "Topic1", subtopic: "Subtopic2" },
+      { id: 3, content: "Out", topic: "Topic1", subtopic: "Subtopic3" },
+      { id: 4, content: "These", topic: "Topic1", subtopic: "Subtopic4" },
+      { id: 5, content: "Questions", topic: "Topic1", subtopic: "Subtopic5" }
+    ];
+
     return {
-      data: [
-        { id: 1, content: "Wow", topic: "Topic1", subtopic: "Subtopic1" },
-        { id: 2, content: "Check", topic: "Topic1", subtopic: "Subtopic2" },
-        { id: 3, content: "Out", topic: "Topic1", subtopic: "Subtopic3" },
-        { id: 4, content: "These", topic: "Topic1", subtopic: "Subtopic4" },
-        { id: 5, content: "Questions", topic: "Topic1", subtopic: "Subtopic5" }
-      ],
+      data,
+      checkboxPosition: "left",
+      checkedRows: [],
       columns: [
         {
           field: "id",
@@ -35,18 +45,18 @@ export default {
         },
         {
           field: "content",
-          label: "Content",
-          searchable: true
+          label: "Content"
+          /* searchable: true */
         },
         {
           field: "topic",
-          label: "Topic",
-          searchable: true
+          label: "Topic"
+          /* searchable: true */
         },
         {
           field: "subtopic",
-          label: "Subtopic",
-          searchable: true
+          label: "Subtopic"
+          /* searchable: true */
         }
       ]
     };
