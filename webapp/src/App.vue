@@ -8,6 +8,7 @@
         <router-link class="navbar-item" to="/" exact>Home</router-link>
         <router-link class="navbar-item" to="/about" exact>About</router-link>
         <router-link class="navbar-item" to="/question-bank" exact>Questions</router-link>
+        <router-link class="navbar-item" to="/create" exact>Create</router-link>
       </template>
       <template slot="end">
         <div class="navbar-item">

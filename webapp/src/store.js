@@ -10,6 +10,12 @@ export const mutations = {
   },
   logout: function(state) {
     state.loginState = { ...state.loginState, loggedIn: false };
+  },
+  addTopic: function(state, topic) {
+    state.topics = [...state.topics, { ...topic }];
+  },
+  topicsLoaded: function(state, topics) {
+    state.topics = topics;
   }
 };
 
@@ -23,6 +29,16 @@ export const actions = {
   logout: function({ commit }) {
     return axios.get("/api/logout").then(() => {
       commit("logout");
+    });
+  },
+  addTopic({ commit }, topic) {
+    return axios.post("/api/topics", topic).then(response => {
+      commit("addTopic", response.data);
+    });
+  },
+  loadTopics({ commit }) {
+    return axios.get("/api/topics").then(response => {
+      commit("topicsLoaded", response.data);
     });
   }
 };

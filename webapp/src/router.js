@@ -27,6 +27,12 @@ export default new Router({
       name: "question-bank",
       component: () =>
         import(/* webpackChunkName: "question-bank" */ "./views/QuestionBank.vue")
+    },
+    {
+      path: "/create",
+      name: "create",
+      component: () =>
+        import(/* webpackChunkName: "about" */ "./views/Create.vue")
     }
   ]
 });
