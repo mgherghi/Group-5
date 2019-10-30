@@ -24,7 +24,7 @@ function deleteQuestions(questions) {
     deleteQuestion(question);
   }
 }
-s
+
 const router = Router();
 router.route('/questions')
   .all(isAuthenticated)

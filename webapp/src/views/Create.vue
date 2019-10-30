@@ -1,17 +1,17 @@
 <template>
   <div class="create">
-    <div class="columns is-centered">
+    <!-- <div class="columns is-centered">
       <div class="column is-half is-block">
         <h5 class="is-5 title">Topics</h5>
       </div>
-    </div>
+    </div> -->
     <section class="newTopic columns is-centered">
       <div class="column is-half">
-        <h5 class="title is-5">New Topic</h5>
+        <h5 class="title is-5">Create New Topic</h5>
         <form v-on:submit.prevent="onSubmitTopic">
           <span class="has-text-danger" v-if="error">Topic already exists.</span>
           <b-field label="Topic Title">
-            <b-input v-model="newTopic.name" />
+            <b-input v-model="newTopic.name" placeholder="Ex: Integration" />
           </b-field>
           <b-field>
             <div class="control is-block">
@@ -23,7 +23,7 @@
     </section>
     <section class="newSubTopic columns is-centered">
       <div class="column is-half">
-        <h5 class="title is-5">New SubTopic</h5>
+        <h5 class="title is-5">Create New SubTopic</h5>
         <form v-on:submit.prevent="onSubmitSubTopic">
           <b-dropdown label="Topic" v-model="newSubTopic.topic">
             <option v-for="topic in topics" v-bind:key="topic.Id">
@@ -31,7 +31,7 @@
             </option>
           </b-dropdown>
           <b-field label="SubTopic Title">
-            <b-input v-model="newSubTopic.title" />
+            <b-input v-model="newSubTopic.title" placeholder="Ex: By Parts"/>
           </b-field>
           <b-field>
             <div class="control is-block">
