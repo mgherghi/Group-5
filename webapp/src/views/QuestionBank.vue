@@ -8,25 +8,10 @@
     <div class="columns is-centered">
       <div class="column is-half">
         <template v-for="question in questions">
-          <ToDo :key="question.id" :quesiton="question" />
+          <QuestionHolder :key="question.id" :quesiton="question" />
         </template>
       </div>
     </div>
-    <!-- <section class="newTodo columns is-centered">
-      <div class="column is-half">
-        <h5 class="title is-5">New ToDo</h5>
-        <form v-on:submit.prevent="onSubmit">
-          <b-field label="Title">
-            <b-input v-model="newTodo.title" />
-          </b-field>
-          <b-field>
-            <div class="control is-block">
-              <input type="submit" class="button is-link" value="Submit" />
-            </div>
-          </b-field>
-        </form>
-      </div>
-    </section>-->
   </div>
 </template>
 
@@ -35,11 +20,11 @@ import QuestionHolder from "@/components/QuestionHolder.vue";
 export default {
   name: "QuestionBank",
   data: function() {
-    return {
+    /* return {
       newQuesiton: {
         title: null
       }
-    };
+    }; */
   },
   computed: {
     questions() {

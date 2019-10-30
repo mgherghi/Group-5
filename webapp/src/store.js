@@ -16,6 +16,9 @@ export const mutations = {
   },
   topicsLoaded: function(state, topics) {
     state.topics = topics;
+  },
+  questionsLoaded: function(state, questions) {
+    state.questions = questions;
   }
 };
 
@@ -39,6 +42,11 @@ export const actions = {
   loadTopics({ commit }) {
     return axios.get("/api/topics").then(response => {
       commit("topicsLoaded", response.data);
+    });
+  },
+  loadQuesitons({ commit }) {
+    return axios.get("api/questions").then(response => {
+      commit("questionsLoaded", response.data);
     });
   }
 };
