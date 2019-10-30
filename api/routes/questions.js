@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { getRepository, getManager } from 'typeorm';
 import isAuthenticated from '../middleware/isAuthenticated';
+import isTeacher from '../middleware/isTeacher';
 import Question from '../entities/question';
 import Answer from '../entities/answer';
 import Topic from '../entities/topic';
@@ -32,7 +33,7 @@ router.route('/questions')
       res.send(questions);
     });
   })
-  .post((req, res) => {
+  .post(isTeacher, (req, res) => {
     const {
       content, answers, topic, subtopic,
     } = req.body;

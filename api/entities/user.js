@@ -13,6 +13,10 @@ export default class User {
   @PrimaryGeneratedColumn()
   id
 
+  // 0 => Teacher, 1 => Student
+  @Column({ type: 'bool' })
+  role
+
   @Column({ type: 'varchar', unique: true })
   email
 
