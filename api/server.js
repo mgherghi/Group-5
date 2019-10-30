@@ -8,6 +8,7 @@ import config from './config/passport';
 import login from './routes/login';
 import questions from './routes/questions';
 import topics from './routes/topics';
+import courses from './routes/courses';
 
 // Setting up port
 const PORT = process.env.PORT || 3000;
@@ -28,6 +29,7 @@ config();
 app.use(login(passport));
 app.use(questions);
 app.use(topics);
+app.use(courses);
 
 // respond with "hello world" when a GET request is made to the homepage
 app.get('/', (_req, res) => {
