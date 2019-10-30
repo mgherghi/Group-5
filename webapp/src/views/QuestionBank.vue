@@ -7,24 +7,49 @@
     </div>
     <div class="columns is-centered">
       <div class="column is-half">
-        <template v-for="question in questions">
-          <QuestionHolder :key="question.id" :quesiton="question" />
-        </template>
+        <b-table :data="data" :columns="columns" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import QuestionHolder from "@/components/QuestionHolder.vue";
+/* import QuestionHolder from "@/components/QuestionHolder.vue"; */
 export default {
   name: "QuestionBank",
   data: function() {
-    /* return {
-      newQuesiton: {
-        title: null
-      }
-    }; */
+    return {
+      data: [
+        { id: 1, content: "Wow", topic: "Topic1", subtopic: "Subtopic1" },
+        { id: 2, content: "Check", topic: "Topic1", subtopic: "Subtopic2" },
+        { id: 3, content: "Out", topic: "Topic1", subtopic: "Subtopic3" },
+        { id: 4, content: "These", topic: "Topic1", subtopic: "Subtopic4" },
+        { id: 5, content: "Questions", topic: "Topic1", subtopic: "Subtopic5" }
+      ],
+      columns: [
+        {
+          field: "id",
+          label: "ID",
+          numeric: true,
+          searchable: true
+        },
+        {
+          field: "content",
+          label: "Content",
+          searchable: true
+        },
+        {
+          field: "topic",
+          label: "Topic",
+          searchable: true
+        },
+        {
+          field: "subtopic",
+          label: "Subtopic",
+          searchable: true
+        }
+      ]
+    };
   },
   computed: {
     questions() {
@@ -32,7 +57,7 @@ export default {
     }
   },
   components: {
-    QuestionHolder
+    /* QuestionHolder */
   },
   methods: {
     /* onSubmit() {
