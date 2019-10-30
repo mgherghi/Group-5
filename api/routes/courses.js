@@ -2,12 +2,12 @@ import { Router } from 'express';
 import { getRepository, getManager } from 'typeorm';
 import isAuthenticated from '../middleware/isAuthenticated';
 import User from '../entities/user';
-
+import Course from '../entities/course';
 
 function deleteCourses(courses) {
-    for (const course of courses) {
-        getManager().delete(Course, course.id);
-      }
+  for (const course of courses) {
+    getManager().delete(Course, course.id);
+  }
 }
 
 const router = Router();
@@ -36,7 +36,7 @@ router.route('/courses')
     });
   });
 
-router.route('/questions/:id')
+router.route('/courses/:id')
   .all(isAuthenticated)
   .put((req, res) => {
     const foundCourse = req.course;
@@ -54,6 +54,6 @@ router.route('/questions/:id')
     getManager().delete(Course, req.course.id).then(() => {
       res.send(200);
     });
-});
+  });
 
 export default router;

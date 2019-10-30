@@ -4,9 +4,11 @@ import {
   Column,
   PrimaryGeneratedColumn,
   OneToMany,
+  ManyToMany,
 } from 'typeorm';
 import Topic from './topic';
 import Question from './question';
+import Course from './course';
 
 @Entity()
 export default class User {
