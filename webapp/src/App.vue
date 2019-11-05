@@ -7,6 +7,8 @@
       <template slot="start">
         <router-link class="navbar-item" to="/" exact>Home</router-link>
         <router-link class="navbar-item" to="/about" exact>About</router-link>
+        <router-link class="navbar-item" to="/question-bank" exact>Questions</router-link>
+        <router-link class="navbar-item" to="/create" exact>Create</router-link>
       </template>
       <template slot="end">
         <div class="navbar-item">
@@ -14,24 +16,12 @@
             class="button is-primary"
             v-on:click="isLoginModalActive = true"
             v-if="!isLoggedIn"
-          >
-            Login
-          </button>
-          <button
-            class="button is-primary"
-            v-on:click="logout"
-            v-if="isLoggedIn"
-          >
-            Logout
-          </button>
+          >Login</button>
+          <button class="button is-primary" v-on:click="logout" v-if="isLoggedIn">Logout</button>
         </div>
       </template>
     </b-navbar>
-    <b-modal
-      :active.sync="isLoginModalActive"
-      has-modal-card
-      :can-cancel="false"
-    >
+    <b-modal :active.sync="isLoginModalActive" has-modal-card :can-cancel="false">
       <LoginForm v-on:close="isLoginModalActive = false" />
     </b-modal>
     <router-view />
