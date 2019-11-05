@@ -36,8 +36,18 @@ router.route('/courses')
     });
   });
 
-router.route('/questions/:id')
+router.route('/course/:id')
   .all(isAuthenticated)
+  .all((req, res, next) => {
+    getRepository(Course).findOneOrFail(
+      { where: { userId: req.user.id, id: req.params.id } },
+    ).then((_foundCourse) => {
+      req.course = _foundCourse;
+      next();
+    }, () => {
+      res.sendStatus(404);
+    });
+  })
   .put((req, res) => {
     const foundCourse = req.course;
     const { name } = req.body;
